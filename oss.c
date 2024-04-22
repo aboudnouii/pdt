@@ -125,10 +125,10 @@ void best_f(PDT P[],struct P Q[], float ii[], int n, int m)
       }
     }
     }
-    P[t[0].pn - 1].state = 1;
+    P[t[0].n - 1].state = 1;
     Q[i].state = 1;
-    Q[i].n = t[0].n;
-    ii[t[0].pn - 1] = P[t[0].pn - 1].size - Q[i].size;
+    Q[i].pn = t[0].n;
+    ii[t[0].n - 1] = P[t[0].n - 1].size - Q[i].size;
     }
     for(i=0;i<n;i++){
         printf("InternalFragmentation for partition %d : %f\n",i+1,ii[i]);
