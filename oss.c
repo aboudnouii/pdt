@@ -16,6 +16,10 @@ typedef struct WQ
     int i;
     int id;//waiting zone
 } WQ;
+typedef struct bestfittemp {
+    float size;
+    int n;
+} bt;
 void read(PDT a[] , int n)  //reading PDT
 {
     for(int i = 0 ; i < n ; i++)
@@ -87,15 +91,15 @@ void first_f(PDT P[],struct P Q[],WQ queue[],float ii[] ,int z,int n)
         float iii=0;
                 for(int i=0;i<n;i++){
         printf("InternalFragmentation for partition %d : %f\n",i+1,ii[i]);
-        iii += ii[i]; 
+        iii += ii[i];
     }
         printf("ExternalFragmentation : %f\n",iii);
 }
-void best_f(PDT P[], QWP Q[], float ii[], int n, int m) 
+void best_f(PDT P[],struct P Q[], float ii[], int n, int m)
 {
-    int i, j, c, k, b, choice;
-    best t[n];
-    best x;
+    int i, j, c, k, b;
+    bt t[n];
+    bt x;
     float iii;
     char s;
     for(i=0;i<n;i++){
@@ -124,11 +128,11 @@ void best_f(PDT P[], QWP Q[], float ii[], int n, int m)
     P[t[0].pn - 1].state = 1;
     Q[i].state = 1;
     Q[i].n = t[0].n;
-    f_f[t[0].pn - 1] = P[t[0].pn - 1].size - Q[i].size;
+    ii[t[0].pn - 1] = P[t[0].pn - 1].size - Q[i].size;
     }
     for(i=0;i<n;i++){
         printf("InternalFragmentation for partition %d : %f\n",i+1,ii[i]);
-        iii += ii[i]; 
+        iii += ii[i];
     }
     printf("ExternalFragmentation : %f\n",iii);
 }
